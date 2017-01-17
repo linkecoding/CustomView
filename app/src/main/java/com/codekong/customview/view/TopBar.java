@@ -3,10 +3,12 @@ package com.codekong.customview.view;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,7 +22,10 @@ import com.codekong.customview.R;
  * Created by szh on 2017/1/17.
  */
 
+
 public class TopBar extends RelativeLayout {
+    private TopbarClickListener mTopbarClickListener;
+
     private String mTitle;
     private float mTitleTextSize;
     private int mTitleTextColor;
@@ -53,17 +58,17 @@ public class TopBar extends RelativeLayout {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TopBar);
         mTitle = typedArray.getString(R.styleable.TopBar_title);
-        mTitleTextSize = typedArray.getDimension(R.styleable.TopBar_titleTextSize, 10f);
-        mTitleTextColor = typedArray.getColor(R.styleable.TopBar_titleTextColor, 0);
+        mTitleTextSize = typedArray.getDimensionPixelSize(R.styleable.TopBar_titleTextSize, 15);
+        mTitleTextColor = typedArray.getColor(R.styleable.TopBar_titleTextColor, Color.parseColor("#000000"));
 
         mLeftText = typedArray.getString(R.styleable.TopBar_leftText);
-        mLeftTextSize = typedArray.getDimension(R.styleable.TopBar_leftTextSize, 10f);
-        mLeftTextColor = typedArray.getColor(R.styleable.TopBar_leftTextColor, 0);
+        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.TopBar_leftTextSize, 15);
+        mLeftTextColor = typedArray.getColor(R.styleable.TopBar_leftTextColor, Color.parseColor("#000000"));
         mLeftBackground = typedArray.getDrawable(R.styleable.TopBar_leftBackground);
 
         mRightText = typedArray.getString(R.styleable.TopBar_rightText);
-        mRightTextSize = typedArray.getDimension(R.styleable.TopBar_rightTextSize, 10f);
-        mRightTextColor = typedArray.getColor(R.styleable.TopBar_rightTextColor, 0);
+        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.TopBar_rightTextSize, 15);
+        mRightTextColor = typedArray.getColor(R.styleable.TopBar_rightTextColor, Color.parseColor("#000000"));
         mRightBackground = typedArray.getDrawable(R.styleable.TopBar_rightBackground);
 
         typedArray.recycle();
@@ -99,10 +104,48 @@ public class TopBar extends RelativeLayout {
         mTitleParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         mTitleParams.addRule(CENTER_IN_PARENT, TRUE);
         addView(mTitleView, mTitleParams);
+
+        mLeftButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTopbarClickListener != null){
+                    mTopbarClickListener.leftClick(v);
+                }
+            }
+        });
+
+        mRightButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTopbarClickListener != null){
+                    mTopbarClickListener.rightClick(v);
+                }
+            }
+        });
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+    public interface TopbarClickListener{
+        void leftClick(View v);
+        void rightClick(View v);
+    }
 
+    public void setTopbarClickListener(TopbarClickListener topbarClickListener){
+        this.mTopbarClickListener = topbarClickListener;
+    }
+
+    public void setBtnVisibility(int id, boolean flag){
+        if (flag){
+            if (id == 0){
+                mLeftButton.setVisibility(View.VISIBLE);
+            }else if (id == 1){
+                mRightButton.setVisibility(View.VISIBLE);
+            }
+        }else{
+            if (id == 0){
+                mLeftButton.setVisibility(View.GONE);
+            }else if (id == 1){
+                mRightButton.setVisibility(View.GONE);
+            }
+        }
     }
 }
