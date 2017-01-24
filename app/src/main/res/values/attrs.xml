@@ -24,4 +24,11 @@
         <attr name="startAngle" format="float"/>
         <attr name="sweepAngle" format="float"/>
     </declare-styleable>
+    <declare-styleable name="AudioBarGraph">
+        <attr name="rectCount" format="integer"/>
+        <attr name="rectOffset" format="float"/>
+        <attr name="topColor" format="color"/>
+        <attr name="bottomColor" format="color"/>
+        <attr name="delayTime" format="integer"/>
+    </declare-styleable>
 </resources>

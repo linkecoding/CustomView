@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.codekong.customview.R;
+import com.codekong.customview.view.AudioBarGraph;
 import com.codekong.customview.view.FlowLayout;
 import com.codekong.customview.view.TextFlashingTextView;
 import com.codekong.customview.view.TopBar;
@@ -41,5 +42,12 @@ public class MainActivity extends AppCompatActivity {
         topBar.setBtnVisibility(0, true);
         //隐藏右边按钮
         topBar.setBtnVisibility(1, false);
+
+        AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
+        float[] m = new float[20];
+        for (int i = 0; i < m.length; i++) {
+            m[i] = (float) (Math.random() * 100);
+        }
+        audioBarGraph.setCurrentHeight(m);
     }
 }
