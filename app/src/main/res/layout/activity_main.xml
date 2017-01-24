@@ -71,5 +71,10 @@
         app:sweepAngle="220"
         app:textSize="10sp"
         app:textContent="项目进度"/>
+    <com.codekong.customview.view.AudioBarGraph
+        android:id="@+id/id_abg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rectCount="20"/>
 </LinearLayout>
 </ScrollView>

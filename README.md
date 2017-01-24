@@ -138,3 +138,31 @@ textContent                     ----------   内部文字的内容
 startAngle                      ----------   外圆(弧线)的开始角度
 sweepAngle                      ----------   外圆(弧线)的扫过的角度
 ```
+
+## 5. 音频条形图
+### 使用方法:
+```
+<com.codekong.customview.view.AudioBarGraph
+    android:id="@+id/id_abg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rectCount="20"/>
+```
+#### 可配置属性
+```
+rectCount       ----------   小矩形的数目
+rectOffset      ----------   每一个小矩形之间的偏移量
+topColor        ----------   一个小矩形渐变的顶部颜色
+bottomColor     ----------   一个小矩形渐变的顶部颜色
+delayTime       ----------   小矩形变化的延时时间(毫秒)
+```
+#### 可配置属性:
+```
+AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
+float[] m = new float[20];
+for (int i = 0; i < m.length; i++) {
+    m[i] = (float) (Math.random() * 100);
+}
+//通过代码设置每个小矩形的当前高度,使其高度动态变化
+audioBarGraph.setCurrentHeight(m);
+```
