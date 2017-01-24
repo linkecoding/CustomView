@@ -13,4 +13,15 @@
         <attr name="rightTextColor" format="color"/>
         <attr name="rightBackground" format="reference|color"/>
     </declare-styleable>
+    
+    <declare-styleable name="PercentageGraph">
+        <attr name="innerCircleColor" format="color"/>
+        <attr name="outerCircleColor" format="color"/>
+        <attr name="outerCircleStrokeWidth" format="dimension"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="textContent" format="string"/>
+        <attr name="startAngle" format="float"/>
+        <attr name="sweepAngle" format="float"/>
+    </declare-styleable>
 </resources>

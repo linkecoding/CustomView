@@ -177,6 +177,5 @@ public class FlowLayout extends ViewGroup {
             left = getPaddingLeft();
             top += lineHeight;
         }
-
     }
 }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,22 +12,36 @@
     tools:context="com.codekong.customview.activity.MainActivity">
 
     <com.codekong.customview.view.FlowLayout
+        android:id="@+id/id_fl"
         android:layout_width="match_parent"
         android:layout_height="60dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:text="标签1标签1标签1标签1标签1标签1标签1标签1标签1"
+            android:text="签1标签1标签1标签1标签1"
             android:textSize="10sp"
             android:textColor="#000000"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="标签2标签2标签2标签2标签2"
             android:textSize="10sp"
             android:textColor="#000000"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="标签3标签3标签3"
+            android:textSize="10sp"
+            android:textColor="#000000"
+            android:background="@color/colorAccent"
+            android:layout_margin="5dp"
+            android:gravity="center"/>
     </com.codekong.customview.view.FlowLayout>
 
     <com.codekong.customview.view.TextFlashingTextView
@@ -35,6 +52,7 @@
         android:layout_marginLeft="10dp"
         android:text="@string/app_name" />
     <com.codekong.customview.view.TopBar
+        android:id="@+id/id_topbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
@@ -43,4 +61,15 @@
         app:rightText="右边"
         app:title="标题">
     </com.codekong.customview.view.TopBar>
+    <com.codekong.customview.view.PercentageGraph
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:innerCircleColor="@color/colorAccent"
+        app:outerCircleColor="@color/colorPrimary"
+        app:outerCircleStrokeWidth="30dp"
+        app:startAngle="270"
+        app:sweepAngle="220"
+        app:textSize="10sp"
+        app:textContent="项目进度"/>
 </LinearLayout>
+</ScrollView>
