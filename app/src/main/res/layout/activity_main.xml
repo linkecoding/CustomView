@@ -76,5 +76,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:rectCount="20"/>
+    <com.codekong.customview.view.StickyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.codekong.customview.view.StickyScrollView>
 </LinearLayout>
 </ScrollView>

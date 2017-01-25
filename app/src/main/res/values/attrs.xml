@@ -1,34 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="TopBar">
-        <attr name="title" format="string"/>
-        <attr name="titleTextSize" format="dimension"/>
-        <attr name="titleTextColor" format="color"/>
-        <attr name="leftText" format="string"/>
-        <attr name="leftTextSize" format="dimension"/>
-        <attr name="leftTextColor" format="color"/>
-        <attr name="leftBackground" format="reference|color"/>
-        <attr name="rightText" format="string"/>
-        <attr name="rightTextSize" format="dimension"/>
-        <attr name="rightTextColor" format="color"/>
-        <attr name="rightBackground" format="reference|color"/>
-    </declare-styleable>
-    
-    <declare-styleable name="PercentageGraph">
-        <attr name="innerCircleColor" format="color"/>
-        <attr name="outerCircleColor" format="color"/>
-        <attr name="outerCircleStrokeWidth" format="dimension"/>
-        <attr name="textColor" format="color"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="textContent" format="string"/>
-        <attr name="startAngle" format="float"/>
-        <attr name="sweepAngle" format="float"/>
-    </declare-styleable>
-    <declare-styleable name="AudioBarGraph">
-        <attr name="rectCount" format="integer"/>
-        <attr name="rectOffset" format="float"/>
-        <attr name="topColor" format="color"/>
-        <attr name="bottomColor" format="color"/>
-        <attr name="delayTime" format="integer"/>
-    </declare-styleable>
 </resources>

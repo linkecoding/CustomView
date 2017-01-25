@@ -178,3 +178,25 @@ new Thread(new Runnable() {
     }
 }).start();
 ```
+## 6. 有黏性的ScrollView
+> 每个子View占一整个屏幕,当上滑或下滑的距离超过屏幕的1/3时，子View自动向上和向下滑动到
+邻近的View
+
+### 使用方法:
+```
+<com.codekong.customview.view.StickyScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/ic_launcher"/>
+</com.codekong.customview.view.StickyScrollView>
+```
+> 也可以通过`addView向其中添加子元素`
