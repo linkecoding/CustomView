@@ -1,8 +1,8 @@
 package com.codekong.customview.activity;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.codekong.customview.R;
@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         TextFlashingTextView textView = (TextFlashingTextView) findViewById(R.id.mytv);
         textView.setMiddleColor(Color.GREEN);
 
@@ -42,12 +41,23 @@ public class MainActivity extends AppCompatActivity {
         topBar.setBtnVisibility(0, true);
         //隐藏右边按钮
         topBar.setBtnVisibility(1, false);
-
-        AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
-        float[] m = new float[20];
-        for (int i = 0; i < m.length; i++) {
-            m[i] = (float) (Math.random() * 100);
-        }
-        audioBarGraph.setCurrentHeight(m);
+        final AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
+        final float[] m = new float[20];
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    for (int i = 0; i < m.length; i++) {
+                        m[i] = (float) (Math.random() * 100);
+                    }
+                    audioBarGraph.setCurrentHeight(m);
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 }

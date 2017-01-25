@@ -1,6 +1,7 @@
 ## 自定义View合集
 ## 截图示例
 ![截图示例](./example.png)
+![截图示例](./example.gif)
 ## 1. FlowLayout    流式布局
 
 ### 使用方法:
@@ -153,16 +154,27 @@ sweepAngle                      ----------   外圆(弧线)的扫过的角度
 rectCount       ----------   小矩形的数目
 rectOffset      ----------   每一个小矩形之间的偏移量
 topColor        ----------   一个小矩形渐变的顶部颜色
-bottomColor     ----------   一个小矩形渐变的顶部颜色
+bottomColor     ----------   一个小矩形渐变的底部部颜色
 delayTime       ----------   小矩形变化的延时时间(毫秒)
 ```
-#### 可配置属性:
+#### 代码设置:
 ```
-AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
-float[] m = new float[20];
-for (int i = 0; i < m.length; i++) {
-    m[i] = (float) (Math.random() * 100);
-}
-//通过代码设置每个小矩形的当前高度,使其高度动态变化
-audioBarGraph.setCurrentHeight(m);
+final AudioBarGraph audioBarGraph = (AudioBarGraph) findViewById(R.id.id_abg);
+final float[] m = new float[20];
+new Thread(new Runnable() {
+    @Override
+    public void run() {
+        while (true){
+            for (int i = 0; i < m.length; i++) {
+                m[i] = (float) (Math.random() * 100);
+            }
+            audioBarGraph.setCurrentHeight(m);
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}).start();
 ```

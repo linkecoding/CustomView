@@ -41,14 +41,31 @@ public class AudioBarGraph extends View {
     private LinearGradient mLinearGradient;
     //每个小矩形的当前高度
     private float[] mCurrentHeight;
+
+    /**
+     * 代码中直接new时调用
+     *
+     * @param context
+     */
     public AudioBarGraph(Context context) {
         this(context, null);
     }
 
+    /**
+     * 在xml中使用自定义View并且没有自定义属性时调用
+     * @param context
+     * @param attrs
+     */
     public AudioBarGraph(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 在xml中使用自定义View并且使用自定义属性时调用
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     */
     public AudioBarGraph(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mOffset = 5;
@@ -83,19 +100,22 @@ public class AudioBarGraph extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mCurrentHeight != null){
+        if (mCurrentHeight != null) {
+            //使用者指定了每个小矩形当前的高度则使用
             for (int i = 0; i < mRectCount; i++) {
-                int random = (int) (Math.random() * 50);
+                int random = 0;
                 canvas.drawRect((float) (mViewWidth * 0.4 / 2 + mRectWidth * i + mOffset), mCurrentHeight[i] + random,
                         (float) (mViewWidth * 0.4 / 2 + mRectWidth * (i + 1)), mRectHeight, mPaint);
             }
-        }else{
+        } else {
+            //没有指定则使用随机数的高度
             for (int i = 0; i < mRectCount; i++) {
                 int currentHeight = 0;
                 canvas.drawRect((float) (mViewWidth * 0.4 / 2 + mRectWidth * i + mOffset), currentHeight,
                         (float) (mViewWidth * 0.4 / 2 + mRectWidth * (i + 1)), mRectHeight, mPaint);
             }
         }
+        //让View延时mDelayTime毫秒再重绘
         postInvalidateDelayed(mDelayTime);
     }
 
@@ -110,6 +130,10 @@ public class AudioBarGraph extends View {
         mPaint.setShader(mLinearGradient);
     }
 
+    /**
+     * 公开方法设置小矩形高度
+     * @param currentHeight
+     */
     public void setCurrentHeight(float[] currentHeight){
         mCurrentHeight = currentHeight;
     }
